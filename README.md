@@ -1,8 +1,5 @@
 <h2>MedLoco</h2>
 
-<b> Google Play Store </b> - https://play.google.com/store/apps/details?id=com.mayank7319gmail.hospitallocator
-
-
 MedLoco is a convenient app which helps you to locate any hospitals or doctors in your vicinity in case of a medical emergency.
 It uses your device GPS to accurately find your location and show you relevant hospitals near you.
 
