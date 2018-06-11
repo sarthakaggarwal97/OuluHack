@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sarthak.hospitallocator.BookAppointmentActivity;
 import com.sarthak.hospitallocator.R;
 import com.sarthak.hospitallocator.models.DetailResult;
 import com.sarthak.hospitallocator.models.DetailSinglePlace;
@@ -94,6 +95,13 @@ public class DetailActivity extends AppCompatActivity {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=com.ubercab")));
                     }
                 }
+            }
+        });
+        btnBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), BookAppointmentActivity.class));
+
             }
         });
     }
