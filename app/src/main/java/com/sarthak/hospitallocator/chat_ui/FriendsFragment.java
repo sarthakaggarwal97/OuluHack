@@ -117,7 +117,7 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
             listFriendID = new ArrayList<>();
             dialogFindAllFriend.setCancelable(false)
                     .setIcon(com.sarthak.hospitallocator.R.drawable.ic_add_friend)
-                    .setTitle("Get all friend....")
+                    .setTitle("Please wait! Messages are being loaded!")
                     .setTopColorRes(com.sarthak.hospitallocator.R.color.colorPrimary)
                     .show();
             getListFriendUId();
@@ -186,8 +186,8 @@ public class FriendsFragment extends Fragment implements SwipeRefreshLayout.OnRe
         public void onClick(final View view) {
             new LovelyTextInputDialog(view.getContext(), com.sarthak.hospitallocator.R.style.EditTextTintTheme)
                     .setTopColorRes(com.sarthak.hospitallocator.R.color.colorPrimary)
-                    .setTitle("Add friend")
-                    .setMessage("Enter friend email")
+                    .setTitle("Add a doctor to your inbox!")
+                    .setMessage("Enter the email of the doctor")
                     .setIcon(com.sarthak.hospitallocator.R.drawable.ic_add_friend)
                     .setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS)
                     .setInputFilter("Email not found", new LovelyTextInputDialog.TextFilter() {
