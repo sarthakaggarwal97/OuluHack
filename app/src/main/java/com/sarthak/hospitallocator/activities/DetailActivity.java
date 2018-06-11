@@ -2,6 +2,7 @@ package com.sarthak.hospitallocator.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class DetailActivity extends AppCompatActivity {
 
     ImageView imageView2;
     TextView tvName, tvAddress, tvPhone, tvWebsite, tvRating, tvOpening;
-    Button btnCall, btnDirections;
+    Button btnCall, btnDirections, btnUber, btnBook;
     FrameLayout fader;
     AVLoadingIndicatorView avi;
 
@@ -65,7 +66,8 @@ public class DetailActivity extends AppCompatActivity {
         tvOpening = (TextView) findViewById(R.id.tvOpening);
         btnCall = (Button) findViewById(R.id.btnCall);
         btnDirections = (Button) findViewById(R.id.btnDirections);
-
+        btnUber = (Button) findViewById(R.id.btnride);
+        btnBook = (Button) findViewById(R.id.btnbook);
         fader = (FrameLayout) findViewById(R.id.fader);
         avi = (AVLoadingIndicatorView) findViewById(R.id.avi);
         setLoadingAnimation();
@@ -75,6 +77,25 @@ public class DetailActivity extends AppCompatActivity {
         hospitalListClient = googlePlacesApi.getHospitalListClient();
 
         getDetails(placeId);
+        btnUber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PackageManager pm = getPackageManager();
+                try {
+                    pm.getPackageInfo("com.ubercab", PackageManager.GET_ACTIVITIES);
+                    String uri = "uber://?action=setPickup&pickup=my_location";
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(uri));
+                    startActivity(intent);
+                } catch (PackageManager.NameNotFoundException e) {
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.ubercab")));
+                    } catch (android.content.ActivityNotFoundException anfe) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=com.ubercab")));
+                    }
+                }
+            }
+        });
     }
 
     void setDetails(){

@@ -48,6 +48,20 @@
                 android:id="@+id/imageView2"
                 android:layout_height="150dp" />
 
+            <Button
+                android:text="BOOK APPOINTMENT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnbook"
+                android:layout_weight="1"
+                android:background="#AF0000"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="15dp"/>
             <TextView
                 android:text="Hospital Name"
                 android:layout_width="match_parent"
@@ -176,8 +190,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnDirections"
+            android:textColor="#ffffff"
             android:layout_weight="1"
-            android:background="@android:color/holo_orange_light"
+            android:background="#060087"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp" />
+
+        <Button
+            android:text="Ride With UBER"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnride"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:background="#000000"
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp" />
 
@@ -187,9 +213,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnCall"
             android:layout_weight="1"
-            android:background="@color/colourCall"
+            android:background="#174D16"
             android:textColor="@android:color/white"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp" />
+
+
     </LinearLayout>
 </FrameLayout>
