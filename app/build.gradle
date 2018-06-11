@@ -4,8 +4,8 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId "com.mayank7319gmail.hospitallocator"
-        minSdkVersion 16
+        applicationId "com.sarthak.hospitallocator"
+        minSdkVersion 21
         targetSdkVersion 27
         multiDexEnabled true
         versionCode 1
@@ -20,7 +20,16 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
 dependencies {
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    implementation 'com.google.firebase:firebase-auth:11.6.0'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -35,9 +44,14 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
 
     compile 'com.android.support:design:27.1.1'
-
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.yarolegovich:lovely-dialog:1.0.4'
+    compile 'com.android.support:cardview-v7:27.1.1'
+    compile 'com.android.support:percent:27.1.1'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:27.1.1'
 }
+
+apply plugin: 'com.google.gms.google-services'

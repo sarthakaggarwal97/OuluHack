@@ -24,6 +24,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -42,7 +43,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sarthak.hospitallocator.ChatMainActivity;
 import com.sarthak.hospitallocator.R;
+import com.sarthak.hospitallocator.chat_ui.LoginActivity;
 import com.sarthak.hospitallocator.models.DistanceDuration;
 import com.sarthak.hospitallocator.models.DistanceResult;
 import com.sarthak.hospitallocator.models.PlaceList;
@@ -117,13 +120,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mainFrame = (FrameLayout) findViewById(R.id.mainFrame);
 
         setLoadingAnimation();
-//
-//        AdUtil.initAds(ctx);
-//        AdUtil.loadAds(mAdView);
 
-//        MobileAds.initialize(ctx,"ca-app-pub-3940256099942544~3347511713");
-//        AdRequest adRequest = new AdRequest.Builder().build();
-//        mAdView.loadAd(adRequest);
 
             googlePlacesApi = new GooglePlacesApi(ctx);
             hospitalListClient = googlePlacesApi.getHospitalListClient();
@@ -450,7 +447,18 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.message:
+                startActivity(new Intent(getApplicationContext(), ChatMainActivity.class));
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -460,8 +468,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView =
                 (SearchView) menu.findItem(R.id.search).getActionView();
-        searchView.setSearchableInfo(
-                searchManager.getSearchableInfo(getComponentName()));
+        if (searchManager != null) {
+            searchView.setSearchableInfo(
+                    searchManager.getSearchableInfo(getComponentName()));
+        }
 
         return true;
     }

@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "613046762267",
+    "firebase_url": "https://ouluultra.firebaseio.com",
+    "project_id": "ouluultra",
+    "storage_bucket": "ouluultra.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613046762267:android:98c889917864cc26",
+        "android_client_info": {
+          "package_name": "com.sarthak.hospitallocator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613046762267-gidik1g5cvh18ij0a5kqttdasa4lqcav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sarthak.hospitallocator",
+            "certificate_hash": "83c68593f8cc1db0b252d68162e0e1c59276f7dc"
+          }
+        },
+        {
+          "client_id": "613046762267-jsimlvooi8npgugvbk8ce4i10kej929m.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "613046762267-jsimlvooi8npgugvbk8ce4i10kej929m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjOS9Xw_U0v4Kf2rcsisEBW5y8V5IwT7w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613046762267-jsimlvooi8npgugvbk8ce4i10kej929m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
