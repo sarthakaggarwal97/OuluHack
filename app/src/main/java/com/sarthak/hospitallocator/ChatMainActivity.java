@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sarthak.hospitallocator.activities.MainActivity;
 import com.sarthak.hospitallocator.chat_data.StaticConfig;
 import com.sarthak.hospitallocator.chat_service.ServiceUtils;
 import com.sarthak.hospitallocator.chat_ui.FriendsFragment;
@@ -43,6 +44,13 @@ public class ChatMainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser user;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,7 @@
 package com.sarthak.hospitallocator.activities;
 
 import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -454,6 +455,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             case R.id.message:
                 startActivity(new Intent(getApplicationContext(), ChatMainActivity.class));
                 finish();
+                return true;
+            case R.id.video_call:
+                Intent intent =  new Intent();
+                intent.setComponent(new ComponentName("io.agora.openvcall", "io.agora.openvcall.ui.MainActivity"));
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
