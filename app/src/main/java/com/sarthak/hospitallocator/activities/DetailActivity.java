@@ -84,7 +84,7 @@ public class DetailActivity extends AppCompatActivity {
                 PackageManager pm = getPackageManager();
                 try {
                     pm.getPackageInfo("com.ubercab", PackageManager.GET_ACTIVITIES);
-                    String uri = "uber://?action=setPickup&pickup=my_location";
+                    String uri = "uber://?action=setPickup&pickup=my_location&dropoff[latitude]="+lat+"&dropoff[longitude]="+lng+"&dropoff[nickname]="+place.getName();
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(uri));
                     startActivity(intent);
@@ -135,7 +135,7 @@ public class DetailActivity extends AppCompatActivity {
         checkAndSet(tvRating,String.valueOf(place.getRating()));
 
         if(place.getWebsite() != null){
-            tvWebsite.setTextColor(R.color.color_url);
+            tvWebsite.setTextColor(getResources().getColor(R.color.color_url));
             tvWebsite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
