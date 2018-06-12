@@ -6,20 +6,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatCallback;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +23,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -35,7 +30,6 @@ import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,15 +39,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.sarthak.hospitallocator.ChatMainActivity;
+import com.sarthak.hospitallocator.DatabaseHelper;
 import com.sarthak.hospitallocator.R;
-import com.sarthak.hospitallocator.chat_ui.LoginActivity;
 import com.sarthak.hospitallocator.models.DistanceDuration;
 import com.sarthak.hospitallocator.models.DistanceResult;
 import com.sarthak.hospitallocator.models.PlaceList;
 import com.sarthak.hospitallocator.models.SinglePlace;
 import com.sarthak.hospitallocator.rest_api.GooglePlacesApi;
 import com.sarthak.hospitallocator.rest_api.HospitalListClient;
-import com.sarthak.hospitallocator.utils.AdUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import org.parceler.Parcels;
@@ -94,11 +87,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     DistanceResult distanceResult;
 
     FrameLayout mainFrame;
-    Button btnFilter, btnDetails;
+    Button btnFilter, btnDetails, btnShowAppointment;
  //   AdView mAdView;
 
     Spinner spinnerType, spinnerRank;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         //toolbar.setTitle("Hospital Locator");
         setSupportActionBar(toolbar);
-
+        databaseHelper = new DatabaseHelper(this);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -115,8 +108,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         fader = (FrameLayout) findViewById(R.id.fader);
         avi = (AVLoadingIndicatorView) findViewById(R.id.avi);
 
-        btnFilter = (Button) findViewById(R.id.btnFilter);
-        btnDetails = (Button) findViewById(R.id.btnDetails);
+        btnFilter  = findViewById(R.id.btnFilter);
+        btnDetails = findViewById(R.id.btnDetails);
+        btnShowAppointment = findViewById(R.id.btnshow);
+
        // mAdView = (AdView) findViewById(R.id.adView);
         mainFrame = (FrameLayout) findViewById(R.id.mainFrame);
 
@@ -140,6 +135,28 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
+        btnShowAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Cursor res = databaseHelper.getAllData();
+                if(res.getCount()==0){
+
+                    showMessage("Appointments", "No Appointments found");
+
+                }else {
+
+                    StringBuffer buffer = new StringBuffer();
+                    while (res.moveToNext()) {
+                        buffer.append("Hospital: " + res.getString(0) + "\n");
+                        buffer.append("Date: " + res.getString(1) + "\n");
+                        buffer.append("Time: " + res.getString(2) + "\n\n");
+
+                    }
+                    showMessage("Appointments", buffer.toString());
+                }
+            }
+        });
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -342,6 +359,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         startActivity(i);
     }
 
+    public void showMessage(String title, String message){
+
+        AlertDialog.Builder builder  = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
     void getDistance(){
         String destination = "";
 

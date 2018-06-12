@@ -34,15 +34,19 @@ tools:context=".BookAppointmentActivity">
     android:gravity="center"
     android:textColor="#060087"/>
 
-<CalendarView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/calendarView"
-    android:layout_centerVertical="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="10dp"/>
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:endYear="2100"
+        android:startYear="2018"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/calendarView">
+    </DatePicker>
+
 
     <TimePicker
         android:id="@+id/timePicker1"

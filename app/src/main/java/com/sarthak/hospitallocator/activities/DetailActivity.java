@@ -100,7 +100,10 @@ public class DetailActivity extends AppCompatActivity {
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), BookAppointmentActivity.class));
+                //startActivity(new Intent(getApplicationContext(), BookAppointmentActivity.class));
+                Intent intent = new Intent(getApplicationContext(), BookAppointmentActivity.class);
+                intent.putExtra("place", place.getName());
+                startActivity(intent);
 
             }
         });

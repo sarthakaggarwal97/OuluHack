@@ -21,6 +21,18 @@
     </string-array>
 
 
+    <string name="hint_email">Date</string>
+    <string name="hint_password"></string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="beneficiaryaddress">Time</string>
+    <string name="beneficiarycountry">Country</string>
+    <string name="register_benef">Register Beneficiary</string>
+    <string name="show_list_benef">List of Registered Beneficiary</string>
+    <string name="error_email_exists">Email Already Exists</string>
+    <string name="error_message_name">Enter Full Name</string>
+    <string name="error_message_email">Enter Valid Email</string>
+
+    <string name="hint_name">Hospital</string>
     <string name="action_settings">Settings</string>
     <string name="about">About</string>
     <string name="login_success">login success</string>

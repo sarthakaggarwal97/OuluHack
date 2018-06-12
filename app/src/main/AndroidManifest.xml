@@ -88,7 +88,7 @@
             android:persistent="true" />
 
         <activity android:name=".ModeSelectionActivity" />
-        <activity android:name=".BookAppointmentActivity"></activity>
+        <activity android:name=".BookAppointmentActivity" />
     </application>
 
 </manifest>
