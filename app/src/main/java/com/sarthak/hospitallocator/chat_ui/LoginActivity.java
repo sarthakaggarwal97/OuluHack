@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sarthak.hospitallocator.ChatMainActivity;
+import com.sarthak.hospitallocator.ModeSelectionActivity;
 import com.sarthak.hospitallocator.activities.MainActivity;
 import com.sarthak.hospitallocator.chat_data.SharedPreferenceHelper;
 import com.sarthak.hospitallocator.chat_data.StaticConfig;
@@ -83,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                     StaticConfig.UID = user.getUid();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     if (firstTimeAccess) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, ModeSelectionActivity.class));
                         LoginActivity.this.finish();
                     }
                 } else {
@@ -204,7 +205,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else {
                                 initNewUserInfo();
                                 Toast.makeText(LoginActivity.this, "Register and Login success", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                startActivity(new Intent(LoginActivity.this, ModeSelectionActivity.class));
                                 LoginActivity.this.finish();
                             }
                         }
@@ -262,7 +263,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .show();
                             } else {
                                 saveUserInfo();
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                startActivity(new Intent(LoginActivity.this, ModeSelectionActivity.class));
                                 LoginActivity.this.finish();
                             }
                         }

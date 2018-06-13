@@ -7,7 +7,7 @@
     <color name="colourCall">#039233</color>
     <color name="plain_white">#ffffff</color>
     <color name="color_url">#2246e7</color>
-
+    <color name="textColorSecondary">#757575</color>
     <color name="colorIndivateTab">#FFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="colorCardView">#f7f7f7</color>

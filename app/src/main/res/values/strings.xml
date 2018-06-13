@@ -48,5 +48,7 @@
     <string name="hint_username">Enter a new username</string>
     <string name="hint_email_reset">Enter your email</string>
     <string name="enter_group_name">Enter group name</string>
+    <string name="Icare_def">Welcome to Ayush ICare. This will help you self diagnos your eyes against various tests, filter the whole phone from harmful excess blue radiation, submit your online reports, monitor your screen time, search for nearest EYE Care hospitals. All this to protect your eyes, because \n WE CARE. AYUSH ICARE.</string>
+    <string name="ayush_def">We will help you locate nearby, prominent hospitals, book appointments, get directions using Google Maps, Book an Uber to the particular Hospital, Chat with the Doctor, Video Conference with the Doctor in case of emergency. All these to make the consumer ride smooth and centralised.  AYUSH is must.</string>
 
 </resources>
