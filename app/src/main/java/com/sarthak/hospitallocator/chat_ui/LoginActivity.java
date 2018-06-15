@@ -218,8 +218,6 @@ public class LoginActivity extends AppCompatActivity {
                     })
             ;
         }
-
-
         /**
          * Action Login
          *
