@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GooglePlacesApi {
 
-    public static String WEB_KEY = "AIzaSyAYahRK4lmo7sWAMPhWwg8iTpZb2QLACbI";
+    public static String WEB_KEY = "AIzaSyCAQTevtxADDLLGonCClawWcoWAGQqtC0Y";
     public final static int SEARCH_RADIUS = 3000;
 
     public static final int TYPE_HOSPITAL = 0;
@@ -31,7 +31,7 @@ public class GooglePlacesApi {
 
     public GooglePlacesApi(Context ctx) {
         this.ctx = ctx;
-        WEB_KEY = "AIzaSyAYahRK4lmo7sWAMPhWwg8iTpZb2QLACbI";
+        WEB_KEY = "AIzaSyCAQTevtxADDLLGonCClawWcoWAGQqtC0Y";
     }
 
     public HospitalListClient getHospitalListClient(){
